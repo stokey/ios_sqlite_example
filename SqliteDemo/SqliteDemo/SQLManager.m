@@ -191,6 +191,35 @@ static SQLManager *manager = nil;
     return false;
 }
 - (Boolean) deleteStudentByIdNum:(NSString *) studentIdNum{
+    if ( [studentIdNum length]>0){
+        NSString *path = [self applicationDocumentsDirectoryFilePath];
+        if (sqlite3_open([path UTF8String], &db) != SQLITE_OK){
+            sqlite3_close(db);
+            NSLog(@"打开数据库失败");
+        } else {
+            NSString *deleteStr = @"delete from Student where idNum=?";
+            sqlite3_stmt *stmt;
+            if (sqlite3_prepare(db, [deleteStr UTF8String], -1, &stmt, NULL) != SQLITE_OK){
+                sqlite3_close(db);
+                NSLog(@"数据库预处理失败");
+            } else {
+                sqlite3_bind_text(stmt, 1, [studentIdNum UTF8String], -1, nil);
+                int execResult =sqlite3_step(stmt);
+                NSLog(@"execResult:%d",execResult);
+                if (execResult == SQLITE_DONE){
+                    sqlite3_finalize(stmt);
+                    sqlite3_close(db);
+                    return true;
+                } else {
+                    sqlite3_finalize(stmt);
+                    sqlite3_close(db);
+                    return false;
+                }
+            }
+        }
+    } else {
+        NSAssert(NO, @"输入参数为空");
+    }
     return false;
 }
 - (Boolean) updateStudentByIdNum:(NSString *) studentIdNum{
