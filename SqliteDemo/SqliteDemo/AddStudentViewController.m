@@ -42,7 +42,12 @@
         NSLog(@"参数输入为空");
     }else{
         student = [[Student alloc]initWithId:self.studentIdNumTextField.text withName:self.studentNameTextField.text];
-        [[SQLManager shareManager] addStudent:student];
+        if([[SQLManager shareManager] addStudent:student]){
+            NSLog(@"dissMissViewController");
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }else {
+            NSLog(@"插入数据失败！");
+        }
     }
 }
 @end

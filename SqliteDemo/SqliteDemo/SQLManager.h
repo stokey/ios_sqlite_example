@@ -16,6 +16,7 @@
 
 + (SQLManager *) shareManager;
 
+-(NSMutableArray *) getStudents;
 - (Student *) findStudentByIdNum:(NSString *) studentIdNum;
 - (Boolean) addStudent:(Student *) student;
 - (Boolean) deleteStudentByIdNum:(NSString *) studentIdNum;

@@ -49,8 +49,59 @@ static SQLManager *manager = nil;
 -(NSString *) applicationDocumentsDirectoryFilePath{
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentDirectory = [paths lastObject];
+    if (![documentDirectory hasSuffix:@"/"]){
+       documentDirectory = [documentDirectory stringByAppendingString:@"/"];
+    }
     NSString *filePath = [documentDirectory stringByAppendingString:kNameFile];
     return filePath;
+}
+
+- (NSMutableArray *) getStudents{
+    NSMutableArray *studentsArray = [[NSMutableArray alloc]init];
+    NSString *path = [self applicationDocumentsDirectoryFilePath];
+    
+    if (sqlite3_open([path UTF8String], &db) != SQLITE_OK){
+        NSLog(@"findStudentByIdNum 数据库打开失败！");
+        sqlite3_close(db);
+        NSAssert(NO, @"findStudentByIdNum 数据库打开失败！");
+    } else {
+        NSString *querySQL = @"SELECT * FROM Student;";
+        sqlite3_stmt *sqlStmt;
+        // 预处理
+        if (sqlite3_prepare_v2(db, [querySQL UTF8String], -1, &sqlStmt, NULL) != SQLITE_OK){
+            NSLog(@"findStudentByIdNum 数据库查询失败！");
+            sqlite3_close(db);
+            NSAssert(NO, @"findStudentByIdNum 数据库查询失败！");
+        } else {
+            // 绑定
+            sqlite3_bind_null(sqlStmt, -1);
+            // 遍历
+            int execResult = sqlite3_step(sqlStmt);
+            while(execResult ==SQLITE_ROW){
+                NSLog(@"exec result:%d",execResult);
+                // 提取数据
+                char *idNum = (char *)sqlite3_column_text(sqlStmt, 0);
+                NSString *idNumStr = [[NSString alloc]initWithUTF8String:idNum];
+                
+                char *name = (char *)sqlite3_column_text(sqlStmt, 1);
+                NSString *nameStr = [[NSString alloc]initWithUTF8String:name];
+                
+                int sex = sqlite3_column_int(sqlStmt, 2);
+                
+                int age = sqlite3_column_int(sqlStmt, 3);
+                
+                Student *student = [[Student alloc] initWithId:idNumStr withName:nameStr whitSex:sex withAge:age];
+                [studentsArray addObject:student];
+                execResult = sqlite3_step(sqlStmt);
+            }
+            if(execResult == SQLITE_DONE){
+                NSLog(@"exec result:%d",execResult);
+                sqlite3_finalize(sqlStmt);
+                sqlite3_close(db);
+            }
+        }
+    }
+    return studentsArray;
 }
 
 - (Student *) findStudentByIdNum:(NSString *) studentIdNum{
@@ -74,7 +125,7 @@ static SQLManager *manager = nil;
                 // 绑定
                 sqlite3_bind_text(sqlStmt,1, [studentIdNum UTF8String], -1, NULL);
                 // 遍历
-                if (sqlite3_step(sqlStmt) ==SQLITE_ROW){
+                if (sqlite3_step(sqlStmt) == SQLITE_ROW){
                     // 提取数据
                     char *idNum = (char *)sqlite3_column_text(sqlStmt, 0);
                     NSString *idNumStr = [[NSString alloc]initWithUTF8String:idNum];
@@ -85,48 +136,49 @@ static SQLManager *manager = nil;
                     int sex = sqlite3_column_int(sqlStmt, 2);
                     
                     int age = sqlite3_column_int(sqlStmt, 3);
-                    
-                    sqlite3_finalize(sqlStmt);
-                    sqlite3_close(db);
-                    
-                    return student = [[Student alloc] initWithId:idNumStr withName:nameStr whitSex:sex withAge:age];
+                    student = [[Student alloc] initWithId:idNumStr withName:nameStr whitSex:sex withAge:age];
                 }
+                sqlite3_finalize(sqlStmt);
+                sqlite3_close(db);
             }
         }
     } else{
+        sqlite3_close(db);
         NSAssert(NO, @"findStudentByIdNum 输入参数为空");
     }
-    sqlite3_close(db);
     return student;
 }
+
 - (Boolean) addStudent:(Student *) student{
     if (student != nil){
         NSString *path = [self applicationDocumentsDirectoryFilePath];
         if (sqlite3_open([path UTF8String], &db) != SQLITE_OK){
             NSLog(@"addStudent 数据库打开失败！");
             sqlite3_close(db);
-            NSAssert(NO, @"addStudent 数据库打开失败！");
+            // NSAssert(NO, @"addStudent 数据库打开失败！");
         } else {
-            NSString *querySQL = @"INSERT OR REPLACE INTO STUDENT (idNum,name,sex,age) values(?,?,?,?)";
+            NSString *querySQL = @"INSERT OR REPLACE INTO Student (idNum,name,sex,age) values(?,?,?,?)";
             sqlite3_stmt *sqlStmt;
             // 预处理
             if (sqlite3_prepare_v2(db, [querySQL UTF8String], -1, &sqlStmt, NULL) != SQLITE_OK){
                 NSLog(@"addStudent 数据库查询失败！");
                 sqlite3_close(db);
-                NSAssert(NO, @"addStudent 数据库查询失败！");
+                // NSAssert(NO, @"addStudent 数据库查询失败！");
             } else {
-                // 按主键查询
                 // 绑定
                 sqlite3_bind_text(sqlStmt,1, [student.idNum UTF8String], -1, NULL);
                 sqlite3_bind_text(sqlStmt,2, [student.name UTF8String], -1, NULL);
                 sqlite3_bind_int(sqlStmt, 3, student.sex);
                 sqlite3_bind_int(sqlStmt,4, student.age);
                 // 插入
+                
                 if (sqlite3_step(sqlStmt) != SQLITE_DONE){
+                    NSLog(@"exec result:%d",sqlite3_step(sqlStmt));
                     sqlite3_finalize(sqlStmt);
                     sqlite3_close(db);
-                    NSAssert(NO, @"addStudent 插入数据失败！");
+                    NSLog(@"addStudent 插入数据失败！");
                 } else {
+                    NSLog(@"addStudent 插入数据成功！");
                     sqlite3_finalize(sqlStmt);
                     sqlite3_close(db);
                     return true;

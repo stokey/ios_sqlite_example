@@ -14,15 +14,24 @@
 
 @interface HomeViewController ()
 @property(nonatomic,strong) NSMutableArray *studentArray;
+@property (strong, nonatomic) IBOutlet UITableView *studentListView;
 @end
 @implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.studentArray = [[NSMutableArray alloc] init];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    NSMutableArray *temp = [[SQLManager shareManager] getStudents];
+    
+    if (![self.studentArray isEqual:temp]){
+        self.studentArray = temp;
+        [self.studentListView reloadData];
+    }
+    NSLog(@"studentArrayLength:%d",(int)[self.studentArray count]);
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -35,12 +44,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"studentArrayLength:%d",(int)[self.studentArray count]);
     return [self.studentArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeCellIdentifier forIndexPath:indexPath];
-    
+
     if (self.studentArray.count > 0) {
         Student *student = [self.studentArray objectAtIndex:indexPath.row];
         cell.textLabel.text = student.idNum;

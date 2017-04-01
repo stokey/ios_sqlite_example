@@ -485,6 +485,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W4GQSE3MYQ;
 				INFOPLIST_FILE = SqliteDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stokey.SqliteDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -497,6 +498,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = W4GQSE3MYQ;
 				INFOPLIST_FILE = SqliteDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.stokey.SqliteDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -572,6 +574,7 @@
 				3D5E7EDB1E8D5AC100C0C7E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D5E7EDC1E8D5AC100C0C7E2 /* Build configuration list for PBXNativeTarget "SqliteDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -580,6 +583,7 @@
 				3D5E7EDE1E8D5AC100C0C7E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D5E7EDF1E8D5AC100C0C7E2 /* Build configuration list for PBXNativeTarget "SqliteDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -588,6 +592,7 @@
 				3D5E7EE11E8D5AC100C0C7E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
