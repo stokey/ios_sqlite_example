@@ -107,17 +107,60 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CmX-ej-RlB">
+                                <rect key="frame" x="16" y="407" width="343" height="40"/>
+                                <accessibility key="accessibilityConfiguration" hint="请输入学号"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="925-24-9Sv"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABz-18-6fa">
+                                <rect key="frame" x="16" y="527" width="343" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Rkg-xl-ovI"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="性别：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spx-Ym-Xju">
+                                <rect key="frame" x="16" y="361" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="年龄：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrm-Eg-IFa">
+                                <rect key="frame" x="16" y="481" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="ABz-18-6fa" firstAttribute="top" secondItem="Hrm-Eg-IFa" secondAttribute="bottom" constant="25" id="1pN-eU-Ydo"/>
+                            <constraint firstItem="CmX-ej-RlB" firstAttribute="trailing" secondItem="Hrm-Eg-IFa" secondAttribute="trailing" id="3Sc-Dy-gOn"/>
                             <constraint firstItem="thu-8i-X2l" firstAttribute="top" secondItem="9g6-RS-IjG" secondAttribute="bottom" constant="25" id="9Rx-Cp-daU"/>
+                            <constraint firstItem="spx-Ym-Xju" firstAttribute="leading" secondItem="CmX-ej-RlB" secondAttribute="leading" id="AHF-ai-SXB"/>
+                            <constraint firstItem="Hrm-Eg-IFa" firstAttribute="top" secondItem="CmX-ej-RlB" secondAttribute="bottom" constant="34" id="GJx-Um-mmL"/>
                             <constraint firstItem="ePq-w1-TIY" firstAttribute="trailing" secondItem="Kla-9c-QKo" secondAttribute="trailingMargin" id="J92-Ta-i5Z"/>
                             <constraint firstItem="vOM-xg-yws" firstAttribute="leading" secondItem="Kla-9c-QKo" secondAttribute="leadingMargin" id="JxT-aP-D4r"/>
+                            <constraint firstItem="CmX-ej-RlB" firstAttribute="top" secondItem="spx-Ym-Xju" secondAttribute="bottom" constant="25" id="KdI-bV-ELb"/>
+                            <constraint firstItem="spx-Ym-Xju" firstAttribute="leading" secondItem="ePq-w1-TIY" secondAttribute="leading" id="NQa-fF-OSi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vOM-xg-yws" secondAttribute="trailing" id="RfM-ca-THO"/>
+                            <constraint firstItem="spx-Ym-Xju" firstAttribute="top" secondItem="ePq-w1-TIY" secondAttribute="bottom" constant="37" id="UqC-PO-JX3"/>
                             <constraint firstItem="9g6-RS-IjG" firstAttribute="leading" secondItem="Kla-9c-QKo" secondAttribute="leadingMargin" id="V9y-iv-GLO"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9g6-RS-IjG" secondAttribute="trailing" id="df7-xR-Pqq"/>
+                            <constraint firstItem="Hrm-Eg-IFa" firstAttribute="leading" secondItem="ABz-18-6fa" secondAttribute="leading" id="dwy-iM-Ro8"/>
+                            <constraint firstItem="spx-Ym-Xju" firstAttribute="trailing" secondItem="ePq-w1-TIY" secondAttribute="trailing" id="gsL-Dt-CQ7"/>
+                            <constraint firstItem="spx-Ym-Xju" firstAttribute="trailing" secondItem="CmX-ej-RlB" secondAttribute="trailing" id="hJu-wh-dQI"/>
+                            <constraint firstItem="CmX-ej-RlB" firstAttribute="leading" secondItem="Hrm-Eg-IFa" secondAttribute="leading" id="lev-tP-4v9"/>
                             <constraint firstItem="9g6-RS-IjG" firstAttribute="top" secondItem="ZQX-fu-Eio" secondAttribute="bottom" constant="54" id="o3L-WC-jyK"/>
                             <constraint firstItem="vOM-xg-yws" firstAttribute="top" secondItem="thu-8i-X2l" secondAttribute="bottom" constant="34" id="oEN-3B-De3"/>
+                            <constraint firstItem="Hrm-Eg-IFa" firstAttribute="trailing" secondItem="ABz-18-6fa" secondAttribute="trailing" id="pWo-Iw-Eh6"/>
                             <constraint firstItem="ePq-w1-TIY" firstAttribute="top" secondItem="vOM-xg-yws" secondAttribute="bottom" constant="25" id="t96-NO-CrU"/>
                             <constraint firstItem="thu-8i-X2l" firstAttribute="trailing" secondItem="Kla-9c-QKo" secondAttribute="trailingMargin" id="yGg-yr-t53"/>
                             <constraint firstItem="ePq-w1-TIY" firstAttribute="leading" secondItem="Kla-9c-QKo" secondAttribute="leadingMargin" id="yXL-bR-hbb"/>
@@ -132,8 +175,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="studentAgeTexField" destination="ABz-18-6fa" id="sYf-BN-5S9"/>
                         <outlet property="studentIdNumTextField" destination="thu-8i-X2l" id="1B8-jV-fUd"/>
                         <outlet property="studentNameTextField" destination="ePq-w1-TIY" id="liB-dE-v7c"/>
+                        <outlet property="studentSexTexField" destination="CmX-ej-RlB" id="y8d-WD-5Ii"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j68-zz-wpl" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -20,7 +20,7 @@
     return self;
 }
 
--(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name whitSex:(int) sex{
+-(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name withSex:(int) sex{
     if (self = [self initWithId:idNum withName:name]){
         self.sex = sex;//男性为0，女性为1
     }
@@ -34,8 +34,8 @@
     return self;
 }
 
--(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name whitSex:(int) sex withAge:(int) age{
-    if (self = [self initWithId:idNum withName:name whitSex:sex]){
+-(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name withSex:(int) sex withAge:(int) age{
+    if (self = [self initWithId:idNum withName:name withSex:sex]){
         self.age = age;
     }
     return self;

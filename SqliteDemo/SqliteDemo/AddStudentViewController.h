@@ -11,6 +11,8 @@
 @interface AddStudentViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UITextField *studentIdNumTextField;
 @property (weak, nonatomic) IBOutlet UITextField *studentNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *studentSexTexField;
+@property (weak, nonatomic) IBOutlet UITextField *studentAgeTexField;
 - (IBAction)addAction:(UIBarButtonItem *)sender;
 
 @end

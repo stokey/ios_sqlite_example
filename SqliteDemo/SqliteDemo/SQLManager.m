@@ -90,7 +90,7 @@ static SQLManager *manager = nil;
                 
                 int age = sqlite3_column_int(sqlStmt, 3);
                 
-                Student *student = [[Student alloc] initWithId:idNumStr withName:nameStr whitSex:sex withAge:age];
+                Student *student = [[Student alloc] initWithId:idNumStr withName:nameStr withSex:sex withAge:age];
                 [studentsArray addObject:student];
                 execResult = sqlite3_step(sqlStmt);
             }
@@ -136,7 +136,7 @@ static SQLManager *manager = nil;
                     int sex = sqlite3_column_int(sqlStmt, 2);
                     
                     int age = sqlite3_column_int(sqlStmt, 3);
-                    student = [[Student alloc] initWithId:idNumStr withName:nameStr whitSex:sex withAge:age];
+                    student = [[Student alloc] initWithId:idNumStr withName:nameStr withSex:sex withAge:age];
                 }
                 sqlite3_finalize(sqlStmt);
                 sqlite3_close(db);

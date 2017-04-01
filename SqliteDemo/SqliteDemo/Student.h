@@ -16,10 +16,10 @@
 
 -(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name;
 
--(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name whitSex:(int) sex;
+-(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name withSex:(int) sex;
 
 -(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name withAge:(int) age;
 
--(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name whitSex:(int) sex withAge:(int) age;
+-(instancetype) initWithId:(NSString *)idNum withName:(NSString *)name withSex:(int) sex withAge:(int) age;
 
 @end

@@ -41,7 +41,10 @@
     if ([self.studentNameTextField.text length] <=0 || [self.studentIdNumTextField.text length]<=0){
         NSLog(@"参数输入为空");
     }else{
-        student = [[Student alloc]initWithId:self.studentIdNumTextField.text withName:self.studentNameTextField.text];
+        int sex = [self.studentSexTexField.text containsString:@"男"]? 0:1;
+        int age = [self.studentAgeTexField.text intValue];
+        student = [[Student alloc]initWithId:self.studentIdNumTextField.text withName:self.studentNameTextField.text withSex:sex withAge:age];
+        
         if([[SQLManager shareManager] addStudent:student]){
             NSLog(@"dissMissViewController");
             [self dismissViewControllerAnimated:YES completion:nil];
