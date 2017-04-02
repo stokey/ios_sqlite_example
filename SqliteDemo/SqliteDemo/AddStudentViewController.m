@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+     NSLog(@"bundlePath:%@",[[NSBundle mainBundle]bundlePath]);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,6 +39,8 @@
 
 - (IBAction)addAction:(UIBarButtonItem *)sender {
     Student *student = nil;
+    [self clearTextFieldResponder];
+    
     if ([self.studentNameTextField.text length] <=0 || [self.studentIdNumTextField.text length]<=0){
         NSLog(@"参数输入为空");
     }else{
@@ -51,6 +54,34 @@
         }else {
             NSLog(@"插入数据失败！");
         }
+    }
+}
+-(BOOL) textFieldShouldReturn:(UITextField *)textField{
+    NSString *restorationIdentifier = textField.restorationIdentifier;
+    if ([restorationIdentifier isEqual:@"studentIdNum"]){
+        [self.studentNameTextField becomeFirstResponder];
+    }else if ([restorationIdentifier isEqual:@"studentName"]){
+        [self.studentSexTexField becomeFirstResponder];
+    }else if ([restorationIdentifier isEqual:@"studentSex"]){
+        [self.studentAgeTexField becomeFirstResponder];
+    }else{
+        [textField resignFirstResponder];
+    }
+    return YES;
+}
+
+-(void) clearTextFieldResponder{
+    if ([self.studentIdNumTextField isFirstResponder]) {
+        [self.studentIdNumTextField resignFirstResponder];
+    }
+    if ([self.studentNameTextField isFirstResponder]) {
+        [self.studentNameTextField resignFirstResponder];
+    }
+    if ([self.studentAgeTexField isFirstResponder]) {
+        [self.studentAgeTexField resignFirstResponder];
+    }
+    if ([self.studentSexTexField isFirstResponder]) {
+        [self.studentSexTexField resignFirstResponder];
     }
 }
 @end
