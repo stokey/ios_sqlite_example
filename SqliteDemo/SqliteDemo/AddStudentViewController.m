@@ -20,6 +20,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
      NSLog(@"bundlePath:%@",[[NSBundle mainBundle]bundlePath]);
+    
+    [self.studentSexSegment addTarget:self action:@selector(segementChange:) forControlEvents:UIControlEventValueChanged];
+}
+
+-(void) segementChange:(UISegmentedControl *)sender{
+    [self clearTextFieldResponder];
+    
+    if (sender.selectedSegmentIndex == 0) {
+        NSLog(@"select sex is man");
+    }else{
+        NSLog(@"select sex is woman");
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,8 +55,10 @@
     
     if ([self.studentNameTextField.text length] <=0 || [self.studentIdNumTextField.text length]<=0){
         NSLog(@"参数输入为空");
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Warning" message:@"输入参数不完善，请检查参数" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [alert show];
     }else{
-        int sex = [self.studentSexTexField.text containsString:@"男"]? 0:1;
+        int sex = (int)[self.studentSexSegment selectedSegmentIndex];
         int age = [self.studentAgeTexField.text intValue];
         student = [[Student alloc]initWithId:self.studentIdNumTextField.text withName:self.studentNameTextField.text withSex:sex withAge:age];
         
@@ -56,19 +70,17 @@
         }
     }
 }
+
 -(BOOL) textFieldShouldReturn:(UITextField *)textField{
     NSString *restorationIdentifier = textField.restorationIdentifier;
     if ([restorationIdentifier isEqual:@"studentIdNum"]){
         [self.studentNameTextField becomeFirstResponder];
-    }else if ([restorationIdentifier isEqual:@"studentName"]){
-        [self.studentSexTexField becomeFirstResponder];
-    }else if ([restorationIdentifier isEqual:@"studentSex"]){
-        [self.studentAgeTexField becomeFirstResponder];
-    }else{
-        [textField resignFirstResponder];
+    }else {
+        [self clearTextFieldResponder];
     }
     return YES;
 }
+
 
 -(void) clearTextFieldResponder{
     if ([self.studentIdNumTextField isFirstResponder]) {
@@ -80,8 +92,11 @@
     if ([self.studentAgeTexField isFirstResponder]) {
         [self.studentAgeTexField resignFirstResponder];
     }
-    if ([self.studentSexTexField isFirstResponder]) {
-        [self.studentSexTexField resignFirstResponder];
-    }
 }
+
+-(void) touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    // 点击空白隐藏键盘
+    [self.view endEditing:YES];
+}
+
 @end

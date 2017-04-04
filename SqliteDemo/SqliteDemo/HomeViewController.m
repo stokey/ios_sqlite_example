@@ -48,6 +48,12 @@
     return [self.studentArray count];
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    Student *studentInfo = [self.studentArray objectAtIndex:indexPath.row];
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Student Info" message:studentInfo.name delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alertView show];
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:HomeCellIdentifier forIndexPath:indexPath];
 
@@ -55,6 +61,7 @@
         Student *student = [self.studentArray objectAtIndex:indexPath.row];
         cell.textLabel.text = student.idNum;
         cell.detailTextLabel.text = student.name;
+        cell.accessoryType = UITableViewCellAccessoryDetailButton;
     }
     
     return cell;
@@ -121,5 +128,7 @@
 -(CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 50.f;
 }
+
+
 
 @end

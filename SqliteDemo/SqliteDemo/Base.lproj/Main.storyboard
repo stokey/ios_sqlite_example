@@ -86,7 +86,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="next"/>
                                 <connections>
-                                    <outlet property="delegate" destination="lSw-KP-2DQ" id="7jR-oh-pYO"/>
+                                    <outlet property="delegate" destination="lSw-KP-2DQ" id="aru-ja-yAg"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="studentName" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ePq-w1-TIY">
@@ -113,19 +113,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="studentSex" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CmX-ej-RlB">
-                                <rect key="frame" x="16" y="407" width="343" height="40"/>
-                                <accessibility key="accessibilityConfiguration" hint="请输入学号"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="925-24-9Sv"/>
-                                </constraints>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
-                                <connections>
-                                    <outlet property="delegate" destination="lSw-KP-2DQ" id="ryt-qI-7iB"/>
-                                </connections>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="studentAge" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ABz-18-6fa">
                                 <rect key="frame" x="16" y="527" width="343" height="40"/>
                                 <constraints>
@@ -133,7 +120,7 @@
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                                 <connections>
                                     <outlet property="delegate" destination="lSw-KP-2DQ" id="mJi-Ok-sYr"/>
                                 </connections>
@@ -150,30 +137,37 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="grX-gH-lFJ">
+                                <rect key="frame" x="16" y="405" width="343" height="29"/>
+                                <segments>
+                                    <segment title="Man"/>
+                                    <segment title="Woman"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ABz-18-6fa" firstAttribute="top" secondItem="Hrm-Eg-IFa" secondAttribute="bottom" constant="25" id="1pN-eU-Ydo"/>
-                            <constraint firstItem="CmX-ej-RlB" firstAttribute="trailing" secondItem="Hrm-Eg-IFa" secondAttribute="trailing" id="3Sc-Dy-gOn"/>
+                            <constraint firstItem="grX-gH-lFJ" firstAttribute="leading" secondItem="Hrm-Eg-IFa" secondAttribute="leading" id="8K2-tr-HgS"/>
                             <constraint firstItem="thu-8i-X2l" firstAttribute="top" secondItem="9g6-RS-IjG" secondAttribute="bottom" constant="25" id="9Rx-Cp-daU"/>
-                            <constraint firstItem="spx-Ym-Xju" firstAttribute="leading" secondItem="CmX-ej-RlB" secondAttribute="leading" id="AHF-ai-SXB"/>
-                            <constraint firstItem="Hrm-Eg-IFa" firstAttribute="top" secondItem="CmX-ej-RlB" secondAttribute="bottom" constant="34" id="GJx-Um-mmL"/>
                             <constraint firstItem="ePq-w1-TIY" firstAttribute="trailing" secondItem="Kla-9c-QKo" secondAttribute="trailingMargin" id="J92-Ta-i5Z"/>
                             <constraint firstItem="vOM-xg-yws" firstAttribute="leading" secondItem="Kla-9c-QKo" secondAttribute="leadingMargin" id="JxT-aP-D4r"/>
-                            <constraint firstItem="CmX-ej-RlB" firstAttribute="top" secondItem="spx-Ym-Xju" secondAttribute="bottom" constant="25" id="KdI-bV-ELb"/>
+                            <constraint firstItem="grX-gH-lFJ" firstAttribute="top" secondItem="spx-Ym-Xju" secondAttribute="bottom" constant="23" id="MGK-VV-1y4"/>
                             <constraint firstItem="spx-Ym-Xju" firstAttribute="leading" secondItem="ePq-w1-TIY" secondAttribute="leading" id="NQa-fF-OSi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vOM-xg-yws" secondAttribute="trailing" id="RfM-ca-THO"/>
                             <constraint firstItem="spx-Ym-Xju" firstAttribute="top" secondItem="ePq-w1-TIY" secondAttribute="bottom" constant="37" id="UqC-PO-JX3"/>
                             <constraint firstItem="9g6-RS-IjG" firstAttribute="leading" secondItem="Kla-9c-QKo" secondAttribute="leadingMargin" id="V9y-iv-GLO"/>
+                            <constraint firstItem="grX-gH-lFJ" firstAttribute="leading" secondItem="spx-Ym-Xju" secondAttribute="leading" id="VgT-F2-Qpy"/>
+                            <constraint firstItem="grX-gH-lFJ" firstAttribute="trailing" secondItem="spx-Ym-Xju" secondAttribute="trailing" id="b9N-vr-bww"/>
+                            <constraint firstItem="grX-gH-lFJ" firstAttribute="trailing" secondItem="Hrm-Eg-IFa" secondAttribute="trailing" id="bf6-6g-j5d"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9g6-RS-IjG" secondAttribute="trailing" id="df7-xR-Pqq"/>
                             <constraint firstItem="Hrm-Eg-IFa" firstAttribute="leading" secondItem="ABz-18-6fa" secondAttribute="leading" id="dwy-iM-Ro8"/>
                             <constraint firstItem="spx-Ym-Xju" firstAttribute="trailing" secondItem="ePq-w1-TIY" secondAttribute="trailing" id="gsL-Dt-CQ7"/>
-                            <constraint firstItem="spx-Ym-Xju" firstAttribute="trailing" secondItem="CmX-ej-RlB" secondAttribute="trailing" id="hJu-wh-dQI"/>
-                            <constraint firstItem="CmX-ej-RlB" firstAttribute="leading" secondItem="Hrm-Eg-IFa" secondAttribute="leading" id="lev-tP-4v9"/>
                             <constraint firstItem="9g6-RS-IjG" firstAttribute="top" secondItem="ZQX-fu-Eio" secondAttribute="bottom" constant="54" id="o3L-WC-jyK"/>
                             <constraint firstItem="vOM-xg-yws" firstAttribute="top" secondItem="thu-8i-X2l" secondAttribute="bottom" constant="34" id="oEN-3B-De3"/>
                             <constraint firstItem="Hrm-Eg-IFa" firstAttribute="trailing" secondItem="ABz-18-6fa" secondAttribute="trailing" id="pWo-Iw-Eh6"/>
                             <constraint firstItem="ePq-w1-TIY" firstAttribute="top" secondItem="vOM-xg-yws" secondAttribute="bottom" constant="25" id="t96-NO-CrU"/>
+                            <constraint firstItem="Hrm-Eg-IFa" firstAttribute="top" secondItem="grX-gH-lFJ" secondAttribute="bottom" constant="48" id="tYs-p1-b7G"/>
                             <constraint firstItem="thu-8i-X2l" firstAttribute="trailing" secondItem="Kla-9c-QKo" secondAttribute="trailingMargin" id="yGg-yr-t53"/>
                             <constraint firstItem="ePq-w1-TIY" firstAttribute="leading" secondItem="Kla-9c-QKo" secondAttribute="leadingMargin" id="yXL-bR-hbb"/>
                             <constraint firstItem="thu-8i-X2l" firstAttribute="leading" secondItem="Kla-9c-QKo" secondAttribute="leadingMargin" id="zgi-qr-1Xf"/>
@@ -182,7 +176,7 @@
                     <navigationItem key="navigationItem" id="SAd-wg-FbT">
                         <barButtonItem key="rightBarButtonItem" title="完成" id="MPi-7n-U7m">
                             <connections>
-                                <action selector="addAction:" destination="j68-zz-wpl" id="4hk-vj-eER"/>
+                                <action selector="addAction:" destination="lSw-KP-2DQ" id="1ru-13-i5E"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -190,12 +184,12 @@
                         <outlet property="studentAgeTexField" destination="ABz-18-6fa" id="sYf-BN-5S9"/>
                         <outlet property="studentIdNumTextField" destination="thu-8i-X2l" id="1B8-jV-fUd"/>
                         <outlet property="studentNameTextField" destination="ePq-w1-TIY" id="liB-dE-v7c"/>
-                        <outlet property="studentSexTexField" destination="CmX-ej-RlB" id="y8d-WD-5Ii"/>
+                        <outlet property="studentSexSegment" destination="grX-gH-lFJ" id="Qyk-7n-C6R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j68-zz-wpl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2748" y="-167"/>
+            <point key="canvasLocation" x="2748" y="-167.76611694152925"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="f82-Ud-VTm">
