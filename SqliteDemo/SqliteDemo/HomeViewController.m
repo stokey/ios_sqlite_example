@@ -20,16 +20,39 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIRefreshControl *refreshController = [[UIRefreshControl alloc]init];
+    refreshController.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    [refreshController addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshController;
+}
+
+-(void) refreshData{
+    if (self.refreshControl.isRefreshing){
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"加载中..."];
+        self.refreshTime = [[NSDate alloc]init];
+        NSMutableArray *temp = [[SQLManager shareManager] getStudents];
+    
+        [self.refreshControl endRefreshing];
+        
+        if (![self.studentArray isEqual:temp]){
+            self.studentArray = temp;
+            [self.studentListView reloadData];
+        }
+    } else {
+        self.refreshTime = [[NSDate alloc]init];
+        NSMutableArray *temp = [[SQLManager shareManager] getStudents];
+        
+        if (![self.studentArray isEqual:temp]){
+            self.studentArray = temp;
+            [self.studentListView reloadData];
+        }
+    }
 }
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    NSMutableArray *temp = [[SQLManager shareManager] getStudents];
-    
-    if (![self.studentArray isEqual:temp]){
-        self.studentArray = temp;
-        [self.studentListView reloadData];
-    }
+    [self refreshData];
     NSLog(@"studentArrayLength:%d",(int)[self.studentArray count]);
 }
 - (void)didReceiveMemoryWarning {

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UITableViewController<UITableViewDelegate>
-
+@property(atomic,strong) NSDate *refreshTime;
 @end
