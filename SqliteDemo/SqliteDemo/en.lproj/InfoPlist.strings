@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  SqliteDemo
+
+  Created by meizu on 2017/4/7.
+  Copyright © 2017年 stokey. All rights reserved.
+*/
+CFBundleDisplayName="SQLite Demo";

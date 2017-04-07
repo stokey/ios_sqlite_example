@@ -1,0 +1,30 @@
+
+/* Class = "UILabel"; text = "学号："; ObjectID = "9g6-RS-IjG"; */
+"9g6-RS-IjG.text" = "学号：";
+
+/* Class = "UILabel"; text = "年龄："; ObjectID = "Hrm-Eg-IFa"; */
+"Hrm-Eg-IFa.text" = "年龄：";
+
+/* Class = "UIBarButtonItem"; title = "完成"; ObjectID = "MPi-7n-U7m"; */
+"MPi-7n-U7m.title" = "完成";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "ScH-gb-7us"; */
+"ScH-gb-7us.text" = "Subtitle";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "YbO-uE-voO"; */
+"YbO-uE-voO.text" = "Title";
+
+/* Class = "UISegmentedControl"; grX-gH-lFJ.segmentTitles[0] = "Man"; ObjectID = "grX-gH-lFJ"; */
+"grX-gH-lFJ.segmentTitles[0]" = "Man";
+
+/* Class = "UISegmentedControl"; grX-gH-lFJ.segmentTitles[1] = "Woman"; ObjectID = "grX-gH-lFJ"; */
+"grX-gH-lFJ.segmentTitles[1]" = "Woman";
+
+/* Class = "UILabel"; text = "性别："; ObjectID = "spx-Ym-Xju"; */
+"spx-Ym-Xju.text" = "性别：";
+
+/* Class = "UITextField"; accessibilityHint = "请输入学号"; ObjectID = "thu-8i-X2l"; */
+"thu-8i-X2l.accessibilityHint" = "请输入学号";
+
+/* Class = "UILabel"; text = "姓名："; ObjectID = "vOM-xg-yws"; */
+"vOM-xg-yws.text" = "姓名：";
