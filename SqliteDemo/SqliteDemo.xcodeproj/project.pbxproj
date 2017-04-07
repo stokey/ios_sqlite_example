@@ -19,6 +19,7 @@
 		3D5E7EEB1E8D65E100C0C7E2 /* Student.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E7EEA1E8D65E100C0C7E2 /* Student.m */; };
 		3D5E7EEE1E8D6A3300C0C7E2 /* AddStudentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E7EED1E8D6A3300C0C7E2 /* AddStudentViewController.m */; };
 		3D5E7EF31E8D70F500C0C7E2 /* SQLManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D5E7EF21E8D70F500C0C7E2 /* SQLManager.m */; };
+		6159AC721E973AB600034BCB /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6159AC711E973AB600034BCB /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		3D5E7EED1E8D6A3300C0C7E2 /* AddStudentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddStudentViewController.m; sourceTree = "<group>"; };
 		3D5E7EF11E8D70F500C0C7E2 /* SQLManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLManager.h; sourceTree = "<group>"; };
 		3D5E7EF21E8D70F500C0C7E2 /* SQLManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLManager.m; sourceTree = "<group>"; };
+		6159AC711E973AB600034BCB /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 		3D5E7EA31E8D5AC000C0C7E2 = {
 			isa = PBXGroup;
 			children = (
+				6159AC711E973AB600034BCB /* Settings.bundle */,
 				3D5E7EAE1E8D5AC000C0C7E2 /* SqliteDemo */,
 				3D5E7EC81E8D5AC100C0C7E2 /* SqliteDemoTests */,
 				3D5E7ED31E8D5AC100C0C7E2 /* SqliteDemoUITests */,
@@ -300,6 +303,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6159AC721E973AB600034BCB /* Settings.bundle in Resources */,
 				3D5E7EBF1E8D5AC000C0C7E2 /* LaunchScreen.storyboard in Resources */,
 				3D5E7EBC1E8D5AC000C0C7E2 /* Assets.xcassets in Resources */,
 				3D5E7EBA1E8D5AC000C0C7E2 /* Main.storyboard in Resources */,

@@ -25,6 +25,7 @@
     refreshController.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
     [refreshController addTarget:self action:@selector(refreshData) forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshController;
+    [self checkUserSetting];
 }
 
 -(void) refreshData{
@@ -58,6 +59,56 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) checkUserSetting{
+    NSUserDefaults *defaults = NSUserDefaults.standardUserDefaults;
+    BOOL isNotFirstIn = [defaults boolForKey:@"isNotFirstIn"];
+    if (!isNotFirstIn){
+        NSLog(@"this is app first in");
+    }else{
+        NSLog(@"this is not app first in");
+    }
+    if (!isNotFirstIn){
+        [defaults setValue:@"tiangen" forKey:@"name_preference"];
+        [defaults setInteger:12345678 forKey:@"psw_preference"];
+        [defaults setBool:true forKey:@"isNotFirstIn"];
+        [defaults setDouble:40.0 forKey:@"sliderCacheSize"];
+        [defaults synchronize];
+    } else {
+        [self getUserLoginInfo:defaults];
+    }
+}
+
+
+#pragma mark - Setting Bundle info
+-(NSMutableDictionary *) getUserLoginInfo:(NSUserDefaults *)defaults {
+    NSMutableDictionary *result = [NSMutableDictionary dictionary];
+    if (defaults != nil){
+        NSString *userName = [defaults objectForKey:@"name_preference"];
+        if (userName != nil){
+            [result setObject:userName forKey:@"userName"];
+        }
+        NSLog(@"userName:%@",userName);
+        
+        NSString *userPsw = [defaults objectForKey:@"psw_preference"];
+        if (userPsw != nil){
+            [result setObject:userPsw forKey:@"userPsw"];
+        }
+        NSLog(@"userPsw:%@",userPsw);
+        BOOL tooggle = [defaults boolForKey:@"toggleClearCache"];
+        if (tooggle) {
+            NSLog(@"clear cache is open");
+        } else {
+            NSLog(@"clear cache is close");
+        }
+        double slider = [defaults doubleForKey:@"sliderCacheSize"];
+        NSLog(@"result:%lf",slider);
+        
+        NSString *serviceName = [defaults stringForKey:@"multiService"];
+        NSLog(@"serviceName:%@",serviceName);
+    }
+    return result;
 }
 
 #pragma mark - Table view data source
